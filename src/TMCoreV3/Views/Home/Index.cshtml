@@ -1,0 +1,186 @@
+﻿@using Kendo.Mvc.UI;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@(Html.Kendo().Grid<TMCoreV3.ViewModels.CustomerViewModels.CustomerForm>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(p => p.FirstName).ClientTemplate("<a href='"+@Url.Action("About","Home")+"/#=CustomerId#'>View</a>");
+          columns.Bound(p => p.FirstName);
+          columns.Bound(p => p.LastName);
+          columns.Bound(p => p.Email);
+          columns.Command(command =>
+          {
+              command.Edit();
+              command.Destroy();
+              //command.Custom("Action Name").Click("customAction");
+          }).Width(300); // 
+      })
+      .ToolBar(tools =>
+      {
+          tools.Create();
+          tools.Excel();
+          tools.Pdf();
+          tools.ClientTemplateId("customClientTemplate");
+      })
+      .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("Customer"))
+      .Sortable()
+      .Scrollable()
+      .Groupable()
+      .Pageable()
+      .Filterable()
+      .HtmlAttributes(new { style = "height:550px;" })
+      .DataSource(dataSource =>
+          dataSource
+            .Ajax()
+            .PageSize(2)
+            .Model(model =>
+            {
+                model.Id(p => p.CustomerId);
+            })
+            .Events(events => events.Error("error_handler"))
+            .Create(update => update.Action("EditingPopup_Create", "Grid"))
+            .Read(read => read.Action("EditingPopup_Read", "Grid"))
+            .Update(update => update.Action("EditingPopup_Update", "Grid"))
+            .Destroy(update => update.Action("EditingPopup_Destroy", "Grid"))
+      //.Read(read => read.Url(Url.RouteUrl("defaultApi", new { httproute = "", controller = "Customer", action = "read" })))
+      //.Create(create => create.Url(Url.RouteUrl("defaultApi", new { httproute = "", controller = "Customer", action = "create" })))
+      //.Update(update => update.Url(Url.RouteUrl("defaultApi", new { httproute = "", controller = "Customer", action = "update", id = "{0}" })))
+      //.Destroy(destroy => destroy.Url(Url.RouteUrl("defaultApi", new { httproute = "", controller = "Customer", action = "delete", id = "{0}" })))
+      )
+)
+
+<script type="text/x-kendo-template" id="customClientTemplate">
+    <a id="CustomButton" href="@Url.Action("SomeActionName", "Controller")">Click here</a>
+</script>
+
+@*<div class="col-sm-offset-1 col-sm-10">
+    <div id="grid"></div>
+</div>*@
+
+@section scripts
+{
+    <script>
+        //$(document).ready(function () {
+        //    var crudServiceBaseUrl = "http://localhost:64740/api/customer",
+        //                dataSource = new kendo.data.DataSource({
+        //                    "type": (function () {
+        //                        if (kendo.data.transports['webapi']) { return 'webapi'; }
+        //                        else { throw new Error('The kendo.aspnetmvc.min.js script is not included.'); }
+        //                    })(),
+        //                    transport: {
+        //                        read: {
+        //                            url: crudServiceBaseUrl + "/read",
+        //                            dataType: "json",
+        //                            headers: {
+        //                                'Accept': 'application/json',
+        //                                'Content-Type': 'application/json'
+        //                            },
+        //                        },
+        //                        update: {
+        //                            url: crudServiceBaseUrl + "/update",
+        //                            dataType: "json",
+        //                            headers: {
+        //                                'Accept': 'application/json',
+        //                                'Content-Type': 'application/json'
+        //                            },
+        //                        },
+        //                        destroy: {
+        //                            url: crudServiceBaseUrl + "/destroy",
+        //                            dataType: "json"
+        //                        },
+        //                        create: function (options) {
+        //                            console.log(options);
+        //                            $.ajax({
+        //                                type: "POST",
+        //                                url: crudServiceBaseUrl + "/create",
+        //                                //data:  "{'sUsername':'admin@mail.com','sPassword':'13123','sUserID':'1539','sClubID':'1'}",
+        //                                contentType: "application/json; charset=utf-8",
+        //                                dataType: "json",
+        //                                headers: {
+        //                                    'Accept': 'application/json',
+        //                                    'Content-Type': 'application/json'
+        //                                },
+        //                                success: function (result) {
+        //                                    options.success(result);
+        //                                }
+        //                            });
+        //                        //}
+        //                        //create: {
+        //                        //    url: crudServiceBaseUrl + "/create",
+        //                        //    type: "POST",
+        //                        //    dataType: "json",
+        //                        //    contentType: "application/json"
+        //                        },
+        //                        parameterMap: function (options, operation) {
+        //                            if (operation !== "read" && options.models) {
+        //                                return { models: kendo.stringify(options.models) };
+        //                            }
+        //                        }
+        //                    },
+        //                    "pageSize": 10,
+        //                    "page": 1,
+        //                    "error": error_handler,
+        //                    schema: {
+        //                        data: "data",
+        //                        total: "total",
+        //                        "errors": "Errors",
+        //                        model: {
+        //                            id: "customerId",
+        //                            firstname: "firstName",
+        //                            lastname: "lastName",
+        //                            email: "email",
+        //                            fields: {
+        //                                customerId: { editable: false, "type": "number" },
+        //                                firstname: { editable: true, "type": "string", validation: { required: true } },
+        //                                lastname: { editable: true, "type": "string", validation: { required: true } },
+        //                                email: { editable: true, "type": "string", nullable: false, validation: { required: true } }
+        //                            }
+        //                        }
+        //                    }
+        //                });
+
+        //    $("#grid").kendoGrid({
+        //        dataSource: dataSource,
+        //        pageable: true,
+        //        height: 550,
+        //        toolbar: ["create", "excel", "pdf"],
+        //        columns: [
+        //            { field: "firstName", title: "First Name" },
+        //            { field: "lastName", title: "Last Name" },
+        //            { field: "email", title: "Email" },
+        //            { command: ["edit", "destroy"], title: "&nbsp;", width: "250px" }],
+        //        "pageable": { "buttonCount": 10 },
+        //        "scrollable": false,
+        //        "editable": {
+        //            "confirmation": "Are you sure you want to delete this record?",
+        //            "confirmDelete": "Delete",
+        //            "cancelDelete": "Cancel",
+        //            "mode": "popup",
+        //            "create": true,
+        //            "update": true,
+        //            "destroy": true
+        //        }
+        //    });
+
+
+        //});
+
+        function error_handler(e) {
+            var errors = $.parseJSON(e.xhr.responseText);
+            if (errors) {
+                console.log(errors);
+                //alert("Errors: <br/>" + errors.join("<br/>"));
+            }
+
+            function customAction(e) {
+                e.preventDefault();
+                var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+                window.location.href = '@Url.Action("Index", "Contact")' + "/" + dataItem.customerId;
+            }
+        }
+    </script>
+}
