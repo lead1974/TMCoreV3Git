@@ -10,20 +10,28 @@
         <img src="~/images/logo.png" />
     </a>
 @if (SignInManager.IsSignedIn(User))
-    {
-        <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
-            <ul class="nav navbar-nav navbar-right">
+{
+    <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+        <div class="nav navbar-nav navbar-right">
+            <div class="dropdown" style="color:#fff;background:none;">
+                <a style="color:#fff;background:none;" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i> @UserManager.GetUserName(User)!
+                </a>
+            <ul class="dropdown-menu dropdown-user">
                 <li>
-                    <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                    <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage"><i class="fa fa-user fa-fw"></i> My account</a>
                 </li>
+                <li class="divider"></li>
                 <li>
-                    <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
+                    <a href="@Url.Action("LogOff","Account", new { area = "" })"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
             </ul>
-        </form>
-    }
-    else
-    {
+           </div>
+        </div>
+    </form>
+}
+else
+{
         <ul class="nav navbar-nav navbar-right" >
             @*<li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>*@
             <li><a asp-area="" asp-controller="Account" asp-action="Login" style="color:#fff;background:none;">Returning Customer?</a></li>

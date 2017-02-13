@@ -85,6 +85,8 @@ namespace TMCoreV3
             services.AddTransient<ISmsService, MailService>();
             services.AddTransient<GlobalService, GlobalService>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ICustomerApplianceTypeRepository, CustomerApplianceTypeRepository>();
+            services.AddScoped<SelectedTabFilterAttribute>();
 
             services.AddTransient<TMCoreSeedData>();
 

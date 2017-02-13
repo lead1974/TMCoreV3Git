@@ -14,7 +14,7 @@ using Kendo.Mvc.Extensions;
 
 namespace TMCoreV3.Controllers
 {
-    public class HomeController : Controller
+    public class ScheduleAppointmentController : Controller
     {
         private readonly UserManager<AuthUser> _userManager;
         private readonly SignInManager<AuthUser> _signInManager;
@@ -22,52 +22,42 @@ namespace TMCoreV3.Controllers
         private readonly IMailService _emailSender;
         private readonly ISmsService _smsSender;
         private readonly ILogger _logger;
+
+        private ICustomerApplianceTypeRepository _customerApplianceTypeRepo;
         private TMDbContext _TMDbContext;
 
-        public HomeController(
+        public ScheduleAppointmentController(
             TMDbContext dmContext,
+            ICustomerApplianceTypeRepository customerApplianceTypeRepo,
             UserManager<AuthUser> userManager,
             SignInManager<AuthUser> signInManager,
             RoleManager<AuthRole> roleManager,
             IMailService emailSender,
             ISmsService smsSender,
             ILoggerFactory loggerFactory)
-        {            
+        {
             _TMDbContext = dmContext;
+            _customerApplianceTypeRepo = customerApplianceTypeRepo;
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
-            _logger = loggerFactory.CreateLogger<HomeController>();
+            _logger = loggerFactory.CreateLogger<ScheduleAppointmentController>();
         }
 
-        [SelectedTabFilter("home")]
         public IActionResult Index()
         {
-            ViewBag.SelectiveTab = "home";
+            ViewBag.SelectiveTab = "scheduleappointment";
             return View();
         }
 
-        [SelectedTabFilter("about")]
-        public IActionResult About()
+        [HttpGet, Route("GetCustomerApplianceType")]
+        public IActionResult GetCustomerApplianceType()
         {
-            ViewData["Message"] = "Your application description page.";
-            ViewBag.SelectiveTab = "about";
-            return View();
-        }
-
-        [SelectedTabFilter("contact")]
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-            ViewBag.SelectiveTab = "contact";
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
+            ViewBag.SelectiveTab = "scheduleappointment";
+            var customerApplianceTypes = _customerApplianceTypeRepo.GetAllWithBrands().ToList();
+            return Json(customerApplianceTypes);
         }
     }
 }

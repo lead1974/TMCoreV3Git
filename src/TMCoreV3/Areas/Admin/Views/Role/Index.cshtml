@@ -30,6 +30,7 @@
           columns.Command(command =>
           {
               command.Edit();
+              command.Destroy();
           });
       })
       .ToolBar(tools =>
@@ -54,7 +55,7 @@
             .Read(read => read.Action("EditingPopup_Read", "Role"))
             .Create(update => update.Action("EditingPopup_Create", "Role"))
             .Update(update => update.Action("EditingPopup_Update", "Role"))
-      //.Destroy(update => update.Action("EditingPopup_Destroy", "Role"))
+            .Destroy(update => update.Action("EditingPopup_Destroy", "Role"))
       )
     )
 </div>

@@ -19,7 +19,7 @@ namespace TMCoreV3.DataAccess.Models.Customer
         [Required]
         [DataType(DataType.Text)]
         [StringLength(100, MinimumLength = 5,
-            ErrorMessage = "First Name must be between 5 and 5000 characters long")]
+            ErrorMessage = "Appliance Problem must be between 3 and 5000 characters long")]
         public string Problem { get; set; }
 
         [Display(Name = "Model Number")]

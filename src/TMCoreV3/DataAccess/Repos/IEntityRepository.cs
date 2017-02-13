@@ -27,12 +27,34 @@ namespace TMCoreV3.DataAccess.Repos
         IEnumerable<Customer> GetAll();
         IEnumerable<Customer> GetAllWithApplianceProblems();
         Customer FindById(int Id);
-        Customer FindByName(string postName);
+        Customer FindByName(string Name);
         void Add(Customer newCustomer);
         void Update(Customer newCustomer);
         void Delete(Customer newCustomer);
-        bool SaveAll();
+        bool SaveAll();     
+    }
 
-     
+    public interface ICustomerApplianceTypeRepository
+    {
+        IEnumerable<CustomerApplianceType> GetAll();
+        IEnumerable<CustomerApplianceType> GetAllWithBrands();
+        CustomerApplianceType FindById(int Id);
+        CustomerApplianceType FindByName(string Name);
+        void Add(CustomerApplianceType newCustomerApplianceType);
+        void Update(CustomerApplianceType newCustomerApplianceType);
+        void Delete(CustomerApplianceType newCustomerApplianceType);
+        bool SaveAll();
+    }
+
+    public interface ICustomerApplianceBrandRepository
+    {
+        IEnumerable<CustomerApplianceBrand> GetAll();
+        IEnumerable<CustomerApplianceBrand> GetAllWithBrands();
+        CustomerApplianceBrand FindById(int Id);
+        CustomerApplianceBrand FindByName(string Name);
+        void Add(CustomerApplianceBrand newCustomerApplianceBrand);
+        void Update(CustomerApplianceBrand newCustomerApplianceBrand);
+        void Delete(CustomerApplianceBrand newCustomerApplianceBrand);
+        bool SaveAll();
     }
 }

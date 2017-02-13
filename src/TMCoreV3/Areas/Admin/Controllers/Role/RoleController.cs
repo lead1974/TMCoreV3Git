@@ -109,5 +109,29 @@ namespace TMCoreV3.Areas.Admin.Controllers.Role
             return BadRequest();
         }
 
+        // REMOVE api/values/5
+        [HttpDelete, Route("remove")]
+        public async Task<IActionResult> EditingPopup_Destroy([DataSourceRequest] DataSourceRequest request, RoleEdit theRole)
+        {
+            if (ModelState.IsValid)
+            {
+                var role = await _roleManager.FindByIdAsync(theRole.Id);
+                if (role == null) return BadRequest("Role to remove not found!");
+
+                //Remove All Users from current Role
+                var users = await _userManager.GetUsersInRoleAsync(role.Name);
+                if (users != null)
+                {
+                    foreach (var u in users)
+                    {
+                        await _userManager.RemoveFromRoleAsync(u, role.Name);
+                    }
+                }
+                return Ok();
+            }
+
+            return BadRequest(ModelState);
+        }
+
     }
 }
