@@ -86,6 +86,7 @@ namespace TMCoreV3
             services.AddTransient<GlobalService, GlobalService>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICustomerApplianceTypeRepository, CustomerApplianceTypeRepository>();
+            services.AddScoped<ICustomerApplianceBrandRepository, CustomerApplianceBrandRepository>();
             services.AddScoped<SelectedTabFilterAttribute>();
 
             services.AddTransient<TMCoreSeedData>();

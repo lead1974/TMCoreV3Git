@@ -11,6 +11,8 @@ using TMCoreV3.DataAccess;
 using TMCoreV3.DataAccess.Repos;
 using Kendo.Mvc.UI;
 using Kendo.Mvc.Extensions;
+using TMCoreV3.ViewModels.CustomerViewModels;
+using TMCoreV3.DataAccess.Models.Customer;
 
 namespace TMCoreV3.Controllers
 {
@@ -24,11 +26,11 @@ namespace TMCoreV3.Controllers
         private readonly ILogger _logger;
 
         private ICustomerApplianceTypeRepository _customerApplianceTypeRepo;
-        private TMDbContext _TMDbContext;
+        private ICustomerApplianceBrandRepository _customerApplianceBrandRepo;
 
         public ScheduleAppointmentController(
-            TMDbContext dmContext,
             ICustomerApplianceTypeRepository customerApplianceTypeRepo,
+            ICustomerApplianceBrandRepository customerApplianceBrandRepo,
             UserManager<AuthUser> userManager,
             SignInManager<AuthUser> signInManager,
             RoleManager<AuthRole> roleManager,
@@ -36,7 +38,7 @@ namespace TMCoreV3.Controllers
             ISmsService smsSender,
             ILoggerFactory loggerFactory)
         {
-            _TMDbContext = dmContext;
+            _customerApplianceBrandRepo = customerApplianceBrandRepo;
             _customerApplianceTypeRepo = customerApplianceTypeRepo;
             _userManager = userManager;
             _signInManager = signInManager;
@@ -52,12 +54,53 @@ namespace TMCoreV3.Controllers
             return View();
         }
 
-        [HttpGet, Route("GetCustomerApplianceType")]
-        public IActionResult GetCustomerApplianceType()
+        [HttpPost]
+        public IActionResult Index(ScheduleAppointment form, string returnUrl)
         {
             ViewBag.SelectiveTab = "scheduleappointment";
-            var customerApplianceTypes = _customerApplianceTypeRepo.GetAllWithBrands().ToList();
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("index", "home");
+            }                          
+
+            return View(form);
+        }
+
+        [HttpGet, Route("GetCustomerApplianceType")]
+        public IActionResult GetCustomerApplianceTypes()
+        {
+            var customerApplianceTypes = _customerApplianceTypeRepo.GetAll().ToList();
             return Json(customerApplianceTypes);
+        }
+
+        [HttpGet, Route("GetCustomerApplianceBrand")]
+        public IActionResult GetCustomerApplianceBrands(int? customerApplianceTypes)
+        {
+            var customerApplianceBrands = _customerApplianceBrandRepo.GetAll().AsQueryable();
+            if (customerApplianceTypes!=null)
+            {
+                customerApplianceBrands = customerApplianceBrands.Where(p =>  p.CustomerApplianceTypeId == customerApplianceTypes);
+            }
+            return Json(customerApplianceBrands);
+        }
+
+        [HttpGet, Route("GetStates")]
+        public IActionResult GetStates()
+        {
+            var states = new[]
+            {
+                new State
+                {
+                    StateId=1,
+                    StateName="CA"
+                },
+                new State
+                {
+                    StateId = 2,
+                    StateName = "NV"
+                }
+            };
+            return Json(states);
         }
     }
 }

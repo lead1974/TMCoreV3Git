@@ -46,7 +46,7 @@ namespace TMCoreV3.DataAccess.Repos
         {
             try
             {
-                return _context.CustomerApplianceTypes.OrderByDescending(t => t.Type); 
+                return _context.CustomerApplianceTypes.OrderBy(t => t.Sequence); 
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace TMCoreV3.DataAccess.Repos
             {
                 return _context.CustomerApplianceTypes
                 .Include(c => c.CustomerApplianceBrands)
-                .OrderByDescending(t => t.Type)
+                .OrderBy(t => t.Sequence)
                 .ToList();
             }
             catch (Exception ex)
@@ -81,7 +81,7 @@ namespace TMCoreV3.DataAccess.Repos
         public CustomerApplianceType FindByName(string customerApplianceType)
         {
             return _context.CustomerApplianceTypes.Include(p => p.CustomerApplianceBrands)
-                           .Where(p => p.Type.Contains(customerApplianceType))
+                           .Where(p => p.Name.Contains(customerApplianceType))
                            .FirstOrDefault();
         }
 

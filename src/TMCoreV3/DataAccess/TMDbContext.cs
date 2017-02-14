@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using TMCoreV3.ViewModels;
 using TMCoreV3.DataAccess.Models.User;
 using TMCoreV3.DataAccess.Models.Customer;
-using TMCoreV3.DataAccess.Models.Customer;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace TMCoreV3.DataAccess
 {
@@ -17,8 +17,6 @@ namespace TMCoreV3.DataAccess
         public DbSet<CustomerApplianceProblem> CustomerApplianceProblems { get; set; }
         public DbSet<CustomerApplianceType> CustomerApplianceTypes { get; set; }
         public DbSet<CustomerApplianceBrand> CustomerApplianceBrands { get; set; }
-        public DbSet<CustomerApplianceProblemSchedule> CustomerApplianceProblemSchedules { get; set; }
-
         public TMDbContext(DbContextOptions<TMDbContext> options)
             : base(options)
         {
@@ -27,20 +25,42 @@ namespace TMCoreV3.DataAccess
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            //To navigate, use a Select:
-            // person.Photos
-            //var tags = post.PostTags.Select(c => c.Tag);
-            //builder.Entity<BlogPostTag>().HasKey(x => new { x.PostId, x.TagId });
+            base.OnModelCreating(builder);
+            builder.Entity<CustomerApplianceProblem>()
+                .HasOne(p => p.Customer)
+                .WithMany(p => p.CustomerApplianceProblems)
+                .HasForeignKey(p => p.CustomerId)
+                .HasConstraintName("FK_CustomerApplianceProblem_Customer")
+                .OnDelete(DeleteBehavior.Cascade);
 
-            //builder.Entity<CustomerSchedule>()
-            //    .HasOne(c => c.Customer)
-            //    .WithOne()
-            //    .OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Cascade);
+            builder.Entity<CustomerApplianceBrand>()
+                .HasOne(p => p.customerApplianceType)
+                .WithMany(p => p.CustomerApplianceBrands)
+                .HasForeignKey(p => p.CustomerApplianceTypeId)
+                .HasConstraintName("FK_CustomerApplianceBrand_Customer")
+                .OnDelete(DeleteBehavior.Restrict);
 
             //builder.Entity<CustomerApplianceProblem>()
-            //  .HasOne(c => c.Customer)
+            //    .HasOne(p => p.CustomerApplianceType);
+
+
+            //builder.Entity<CustomerApplianceProblem>()
+            //    .HasOne(p => p.CustomerApplianceBrand);
+
+            //builder.Entity<CustomerApplianceProblem>()
+            //    .HasOne(c => c.CustomerApplianceType)                
+            //    .WithOne()
+            //    .OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
+
+            //builder.Entity<CustomerApplianceProblem>()
+            //    .HasOne(c => c.CustomerApplianceBrand)
+            //    .WithOne()
+            //    .OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
+
+            //builder.Entity<CustomerApplianceType>()
+            //  .HasMany(c => c.CustomerApplianceBrands)
             //  .WithOne()
-            //  .OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Cascade);
+            //  .OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
 
             //builder.Entity<CustomerApplianceProblem>()
             //   .HasOne(c => c.customerApplianceType)
@@ -52,7 +72,7 @@ namespace TMCoreV3.DataAccess
             //   .WithOne()
             //   .OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
 
-            base.OnModelCreating(builder);
+
         }
     }
 }

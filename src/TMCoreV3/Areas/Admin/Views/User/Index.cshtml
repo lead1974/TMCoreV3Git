@@ -40,6 +40,7 @@
       })
       .ToolBar(tools =>
       {
+          //tools.ClientTemplate("<a href='" + @Url.Action("NewUser", "User", new { area = "admin" }) + "' class='btn btn-primary btn-md'><i class='glyphicon glyphicon-plus'></i> Create User</a> ");
           tools.Excel();
       })
       //.Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("Customer"))
@@ -58,10 +59,10 @@
             })
             .Events(events => events.Error("error_handler"))
             .Read(read => read.Action("EditingPopup_Read", "User"))
-          //.Create(update => update.Action("EditingPopup_Create", "User"))
+      //.Create(update => update.Action("EditingPopup_Create", "User"))
 
-          //.Update(update => update.Action("EditingPopup_Update", "User"))
-          //.Destroy(update => update.Action("EditingPopup_Destroy", "User"))
+      //.Update(update => update.Action("EditingPopup_Update", "User"))
+      //.Destroy(update => update.Action("EditingPopup_Destroy", "User"))
       )
     )
 </div>

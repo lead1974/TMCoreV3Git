@@ -49,7 +49,6 @@ namespace TMCoreV3.DataAccess.Repos
     public interface ICustomerApplianceBrandRepository
     {
         IEnumerable<CustomerApplianceBrand> GetAll();
-        IEnumerable<CustomerApplianceBrand> GetAllWithBrands();
         CustomerApplianceBrand FindById(int Id);
         CustomerApplianceBrand FindByName(string Name);
         void Add(CustomerApplianceBrand newCustomerApplianceBrand);

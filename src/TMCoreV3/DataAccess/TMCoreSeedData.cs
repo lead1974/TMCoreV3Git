@@ -86,20 +86,21 @@ namespace TMCoreV3.DataAccess
             {
                 var customerApplianceType1 = new CustomerApplianceType()
                 {
-                    Type = "Air Conditioner",
+                    Name = "Air Conditioner",
+                    Sequence = 1,
                     CreatedBy = "SYSTEM",
                     DateCreated = DateTime.UtcNow,
                     CustomerApplianceBrands = new List<CustomerApplianceBrand>()
                      {
-                         new CustomerApplianceBrand() { Brand= "American Standard", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Carrier", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Crosley", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Danby", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Delonghi", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Modern-Aire", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Sterling", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Tappan", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "Other", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow }
+                         new CustomerApplianceBrand() { Name= "American Standard", Sequence=1,CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Carrier", Sequence=2, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Crosley", Sequence=3, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Danby", Sequence=4, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Delonghi", Sequence=5, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Modern-Aire", Sequence=6, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Sterling", Sequence=7, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Tappan", Sequence=8, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "Other", Sequence=999, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow }
                      }
                 };
                 _tmContext.CustomerApplianceTypes.Add(customerApplianceType1);
@@ -107,27 +108,28 @@ namespace TMCoreV3.DataAccess
 
                 var customerApplianceType2 = new CustomerApplianceType()
                 {
-                    Type = "BBQ",
+                    Name = "BBQ",
+                    Sequence = 2,
                     CreatedBy = "SYSTEM",
                     DateCreated = DateTime.UtcNow,
                     CustomerApplianceBrands = new List<CustomerApplianceBrand>()
                      {
-                         new CustomerApplianceBrand() { Brand= "Bertazzoni", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Bosh", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Brown", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Chambers", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Dacor", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Danby", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Delonghi", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Dynasty", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "Dynasty", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "Frigidaire", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "KitchenAid", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "Samsung", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "Viking", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "Wold", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "Zephyr", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "Other", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow }
+                         new CustomerApplianceBrand() { Name= "Bertazzoni", Sequence=1,CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Bosh", Sequence=2, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Brown", Sequence=3, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Chambers", Sequence=4, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Dacor", Sequence=5, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Danby", Sequence=6, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Delonghi", Sequence=7, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Dynasty", Sequence=8, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "Dynasty", Sequence=9, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "Frigidaire", Sequence=10, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "KitchenAid", Sequence=11, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "Samsung", Sequence=12, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "Viking", Sequence=13, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "Wold", Sequence=14, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "Zephyr", Sequence=15, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "Other", Sequence=999, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow }
                      }
                 };
                 _tmContext.CustomerApplianceTypes.Add(customerApplianceType2);
@@ -135,29 +137,30 @@ namespace TMCoreV3.DataAccess
 
                 var customerApplianceType3 = new CustomerApplianceType()
                 {
-                    Type = "Cooktop",
+                    Name = "Cooktop",
+                    Sequence = 3,
                     CreatedBy = "SYSTEM",
                     DateCreated = DateTime.UtcNow,
                     CustomerApplianceBrands = new List<CustomerApplianceBrand>()
                      {
-                         new CustomerApplianceBrand() { Brand= "Avanti", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Bertazzoni", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Bosch", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Brown", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Caloric", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Chambers", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Dacor", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "DCS", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Delonghi", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
-                         new CustomerApplianceBrand() { Brand= "Dynasty", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "Electrolux", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "Frigidaire", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "KitchenAid", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "Samsung", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "Viking", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "Wold", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "Zephyr", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
-                         new CustomerApplianceBrand() { Brand= "Other", CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow }
+                         new CustomerApplianceBrand() { Name= "Avanti", Sequence=1, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Bertazzoni", Sequence=2, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Bosch", Sequence=3, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Brown", Sequence=4, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Caloric", Sequence=5, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Chambers", Sequence=6, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Dacor", Sequence=7, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "DCS", Sequence=8, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Delonghi", Sequence=9, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow},
+                         new CustomerApplianceBrand() { Name= "Dynasty", Sequence=10, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "Electrolux", Sequence=11, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "Frigidaire", Sequence=12, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "KitchenAid", Sequence=13, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "Samsung", Sequence=14, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "Viking", Sequence=15, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "Wold", Sequence=16, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "Zephyr", Sequence=17, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow },
+                         new CustomerApplianceBrand() { Name= "Other", Sequence=999, CreatedBy="SYSTEM", DateCreated=DateTime.UtcNow }
                      }
                 };
                 _tmContext.CustomerApplianceTypes.Add(customerApplianceType3);
@@ -190,11 +193,8 @@ namespace TMCoreV3.DataAccess
                             ModelNumber="123123123SDfR",
                             ModelSerial="sdfsldkjfSDF",
                             CreatedBy="SYSTEM",
-                                CustomerApplianceProblemSchedules = new List<CustomerApplianceProblemSchedule>()
-                                {
-                                    new CustomerApplianceProblemSchedule() { DesiredScheduleTime=DateTime.UtcNow.AddDays(1), ActualScheduleTime=DateTime.UtcNow.AddDays(2), ScheduleCancelled=true },
-                                    new CustomerApplianceProblemSchedule() { DesiredScheduleTime=DateTime.UtcNow.AddDays(2), ActualScheduleTime=DateTime.UtcNow.AddDays(2) }
-                                },
+                            DesiredScheduleTime=DateTime.UtcNow.AddDays(1),
+                            ProblemStatus="NEW"
                         },
                         new CustomerApplianceProblem() {
                             CustomerApplianceTypeId=2,
@@ -204,10 +204,8 @@ namespace TMCoreV3.DataAccess
                             ModelNumber="2344422333123SDfR",
                             ModelSerial="aaasddffSDF",
                             CreatedBy="SYSTEM",
-                                CustomerApplianceProblemSchedules = new List<CustomerApplianceProblemSchedule>()
-                                {
-                                    new CustomerApplianceProblemSchedule() { DesiredScheduleTime=DateTime.UtcNow.AddDays(1), ActualScheduleTime=DateTime.UtcNow.AddDays(1)}
-                                },
+                            DesiredScheduleTime=DateTime.UtcNow.AddDays(1),
+                            ProblemStatus="NEW"
                         },
                         new CustomerApplianceProblem() {
                             CustomerApplianceTypeId=3,
@@ -217,10 +215,8 @@ namespace TMCoreV3.DataAccess
                             ModelNumber="12asd3123SDfR",
                             ModelSerial="ddddddaaakjfSDF",
                             CreatedBy="SYSTEM",
-                                CustomerApplianceProblemSchedules = new List<CustomerApplianceProblemSchedule>()
-                                {
-                                    new CustomerApplianceProblemSchedule() { DesiredScheduleTime=DateTime.UtcNow.AddDays(3), ActualScheduleTime=DateTime.UtcNow.AddDays(3)}
-                                },
+                            DesiredScheduleTime=DateTime.UtcNow.AddDays(1),
+                            ProblemStatus="NEW"
                         }
                     }
                 };
@@ -251,10 +247,8 @@ namespace TMCoreV3.DataAccess
                             ModelNumber="123123123SDfR",
                             ModelSerial="sdfsldkjfSDF",
                             CreatedBy="SYSTEM",
-                                CustomerApplianceProblemSchedules = new List<CustomerApplianceProblemSchedule>()
-                                {
-                                    new CustomerApplianceProblemSchedule() { DesiredScheduleTime=DateTime.UtcNow.AddDays(1), ActualScheduleTime=DateTime.UtcNow.AddDays(1)}
-                                },
+                            DesiredScheduleTime=DateTime.UtcNow.AddDays(1),
+                            ProblemStatus="APPROVED"
                         },
                         new CustomerApplianceProblem() {
                             CustomerApplianceTypeId=2,
@@ -264,10 +258,8 @@ namespace TMCoreV3.DataAccess
                             ModelNumber="2344422333123SDfR",
                             ModelSerial="aaasddffSDF",
                             CreatedBy="SYSTEM",
-                                CustomerApplianceProblemSchedules = new List<CustomerApplianceProblemSchedule>()
-                                {
-                                    new CustomerApplianceProblemSchedule() { DesiredScheduleTime=DateTime.UtcNow.AddDays(4), ActualScheduleTime=DateTime.UtcNow.AddDays(4)}
-                                },
+                            DesiredScheduleTime=DateTime.UtcNow.AddDays(1),
+                            ProblemStatus="APPROVED"
                         },
                         new CustomerApplianceProblem() {
                             CustomerApplianceTypeId=3,
@@ -277,11 +269,8 @@ namespace TMCoreV3.DataAccess
                             ModelNumber="12asd3123SDfR",
                             ModelSerial="ddddddaaakjfSDF",
                             CreatedBy="SYSTEM",
-                                CustomerApplianceProblemSchedules = new List<CustomerApplianceProblemSchedule>()
-                                {
-                                    new CustomerApplianceProblemSchedule() { DesiredScheduleTime=DateTime.UtcNow.AddDays(1), ActualScheduleTime=DateTime.UtcNow.AddDays(2), ScheduleCancelled=true },
-                                    new CustomerApplianceProblemSchedule() { DesiredScheduleTime=DateTime.UtcNow.AddDays(2), ActualScheduleTime=DateTime.UtcNow.AddDays(2) }
-                                },
+                            DesiredScheduleTime=DateTime.UtcNow.AddDays(1),
+                            ProblemStatus="CANCELLED"
                         }
                     }
                 };
@@ -312,11 +301,8 @@ namespace TMCoreV3.DataAccess
                             ModelNumber="asdg23SDfR",
                             ModelSerial="AAAAAfSDF",
                             CreatedBy="SYSTEM",
-                                CustomerApplianceProblemSchedules = new List<CustomerApplianceProblemSchedule>()
-                                {
-                                    new CustomerApplianceProblemSchedule() { DesiredScheduleTime=DateTime.UtcNow.AddDays(1), ActualScheduleTime=DateTime.UtcNow.AddDays(2), ScheduleCancelled=true },
-                                    new CustomerApplianceProblemSchedule() { DesiredScheduleTime=DateTime.UtcNow.AddDays(2), ActualScheduleTime=DateTime.UtcNow.AddDays(2) }
-                                },
+                            DesiredScheduleTime=DateTime.UtcNow.AddDays(1),
+                            ProblemStatus="NEW"
                         },
                         new CustomerApplianceProblem() {
                             CustomerApplianceTypeId=2,
@@ -326,10 +312,8 @@ namespace TMCoreV3.DataAccess
                             ModelNumber="RRRRRRR123SDfR",
                             ModelSerial="EEEEEEEdffSDF",
                             CreatedBy="SYSTEM",
-                                CustomerApplianceProblemSchedules = new List<CustomerApplianceProblemSchedule>()
-                                {
-                                    new CustomerApplianceProblemSchedule() { DesiredScheduleTime=DateTime.UtcNow.AddDays(1), ActualScheduleTime=DateTime.UtcNow.AddDays(1)}
-                                },
+                            DesiredScheduleTime=DateTime.UtcNow.AddDays(3),
+                            ProblemStatus="NEW"
                         },
                         new CustomerApplianceProblem() {
                             CustomerApplianceTypeId=3,
@@ -338,11 +322,8 @@ namespace TMCoreV3.DataAccess
                             Problem="Shaking",
                             ModelNumber="EERRTTYYYY3SDfR",
                             ModelSerial="WERRTYakjfSDF",
-                            CreatedBy="SYSTEM",
-                                CustomerApplianceProblemSchedules = new List<CustomerApplianceProblemSchedule>()
-                                {
-                                    new CustomerApplianceProblemSchedule() { DesiredScheduleTime=DateTime.UtcNow.AddDays(3), ActualScheduleTime=DateTime.UtcNow.AddDays(3)}
-                                },
+                            DesiredScheduleTime=DateTime.UtcNow.AddDays(2),
+                            ProblemStatus="NEW"
                         }
                     }
                 };

@@ -16,7 +16,8 @@ namespace TMCoreV3.DataAccess.Models.Customer
         [Display(Name = "Appliance Type")]
         [Required]
         [DataType(DataType.Text)]
-        public string Type { get; set; }
+        public string Name { get; set; }
+        public int Sequence { get; set; }
 
         public DateTime? DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }

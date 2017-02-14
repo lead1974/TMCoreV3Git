@@ -32,35 +32,35 @@ namespace TMCoreV3.DataAccess.Models.Customer
         [DataType(DataType.Text)]
         public string ModelSerial { get; set; }
 
+        [Display(Name = "Desired Schedule Time")]
+        [Required]
+        [DataType(DataType.DateTime)]
+        public DateTime DesiredScheduleTime { get; set; }
+
+        [Display(Name = "Actual Schedule Time")]
+        [DataType(DataType.DateTime)]
+        public DateTime? ActualScheduleTime { get; set; }
+
+        [Display(Name = "Problem Status")]
+        public string ProblemStatus { get; set; }
+
         public DateTime? DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }
         public string CreatedBy { get; set; }
         public string UpdatedBy { get; set; }
-
-        [Display(Name = "Approved To Work")]
-        public bool ApprovedToWork { get; set; }
-
-        [Display(Name = "Issue Resolved")]
-        public bool IssueResolevd { get; set; }
 
         [Display(Name = "Date Issue Resolved")]
         public DateTime? DateResolved { get; set; }
         [Display(Name = "Issue Resolved By")]
         public string IssueResolvedBy { get; set; }
 
-
-        //public int CustomerId { get; set; }
-        //[ForeignKey("CustomerId")]
-        //public virtual Customer Customer { get; set; }
+        public int CustomerId { get; set; }
+        public virtual Customer Customer { get; set; }
 
         public int CustomerApplianceTypeId { get; set; }
-        [ForeignKey("CustomerApplianceTypeId")]
-        public virtual CustomerApplianceType customerApplianceType { get; set; }
+        public virtual CustomerApplianceType CustomerApplianceType { get; set; }
 
         public int CustomerApplianceBrandId { get; set; }
-        [ForeignKey("CustomerApplianceBrandId")]
-        public virtual CustomerApplianceBrand customerApplianceBrand { get; set; }
-
-        public virtual ICollection<CustomerApplianceProblemSchedule> CustomerApplianceProblemSchedules { get; set; }
+        public virtual CustomerApplianceBrand CustomerApplianceBrand { get; set; }
     }
 }

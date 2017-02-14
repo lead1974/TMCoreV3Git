@@ -17,11 +17,17 @@ namespace TMCoreV3.DataAccess.Models.Customer
         [Display(Name = "Appliance Brand")]
         [Required]
         [DataType(DataType.Text)]
-        public string Brand { get; set; }
+        public string Name { get; set; }
+        public int Sequence { get; set; }
 
         public DateTime? DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }
         public string CreatedBy { get; set; }
         public string UpdatedBy { get; set; }
+
+        
+        public int CustomerApplianceTypeId { get; set; }
+        public virtual CustomerApplianceType customerApplianceType { get; set; }
+
     }
 }

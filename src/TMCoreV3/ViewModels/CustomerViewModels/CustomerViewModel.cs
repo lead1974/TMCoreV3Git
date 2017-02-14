@@ -92,56 +92,55 @@ namespace TMCoreV3.ViewModels.CustomerViewModels
         public int CustomerId { get; set; }
 
         [Display(Name = "First Name")]
-        [Required]
+        [Required(ErrorMessage = "First Name is required")]
         [DataType(DataType.Text)]
         [StringLength(100, MinimumLength = 2,
             ErrorMessage = "First Name must be between 2 and 100 characters long")]
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
-        [Required]
+        [Required(ErrorMessage = "Last Name is required")]
         [DataType(DataType.Text)]
         [StringLength(100, MinimumLength = 2,
            ErrorMessage = "Last Name must be between 2 and 100 characters long")]
         public string LastName { get; set; }
 
         [Display(Name = "Phone Number")]
-        [Required]
+        [Required(ErrorMessage = "Phone Number is required")]
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
         [Display(Name = "Email")]
-        [Required]
+        [Required(ErrorMessage = "Email is required")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Display(Name = "Addess")]
-        [Required]
+        [Required(ErrorMessage = "Address is required")]
         [DataType(DataType.Text)]
         public string Addess { get; set; }
 
         [Display(Name = "City")]
-        [Required]
+        [Required(ErrorMessage = "City is required")]
         [DataType(DataType.Text)]
         public string City { get; set; }
 
         [Display(Name = "State")]
-        [Required]
         [DataType(DataType.Text)]
         public string State { get; set; }
 
         [Display(Name = "Zip Code")]
-        [Required]
+        [Required(ErrorMessage = "Zip Code is required")]
         [DataType(DataType.Text)]
         public string PostalCode { get; set; }
 
         [Display(Name = "Appliance Type")]
-        [Required]
+        [Required(ErrorMessage = "Appliance Type is required")]
         [DataType(DataType.Text)]
         public int CustomerApplianceTypeId { get; set; }
 
         [Display(Name = "Appliance Brand")]
-        [Required]
+        [Required(ErrorMessage = "Appliance Brand is required")]
         [DataType(DataType.Text)]
         public int CustomerApplianceBrandId { get; set; }
 
@@ -154,14 +153,14 @@ namespace TMCoreV3.ViewModels.CustomerViewModels
         public string ModelSerial { get; set; }
 
         [Display(Name = "Desired Schedule Time")]
-        [Required]
+        [Required(ErrorMessage = "Desired Date/Time Schedule is required")]
         [DataType(DataType.DateTime)]
         public DateTime DesiredScheduleTime { get; set; }
 
-        [Display(Name = "Appliance Problem")]
-        [Required]
+        [Display(Name = "Brief Problem Description")]
+        [Required(ErrorMessage = "Brief Problem Description is required")]
         [DataType(DataType.Text)]
-        [StringLength(100, MinimumLength = 5,ErrorMessage = "Appliance Problem must be between 3 and 5000 characters long")]
+        [StringLength(100, MinimumLength = 5,ErrorMessage = "Brief Problem Description must be between 3 and 5000 characters long")]
         public string Problem { get; set; }
     }
 }
