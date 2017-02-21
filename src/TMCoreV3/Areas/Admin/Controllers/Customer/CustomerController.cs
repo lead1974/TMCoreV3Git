@@ -32,12 +32,14 @@ namespace TMCoreV3.Areas.Admin.Controllers.Customer
         private readonly ILogger _logger;
 
         private ICustomerRepository _customerRepo;
+        private ICustomerCouponRepository _customerCouponRepo;
 
         private const int PostsPerPage = 5;
         private GlobalService _globalService;
 
         public CustomerController(
             ICustomerRepository customerRepo,
+            ICustomerCouponRepository customerCouponRepo,
             UserManager<AuthUser> userManager,
             SignInManager<AuthUser> signInManager,
             RoleManager<AuthRole> roleManager,
@@ -47,6 +49,7 @@ namespace TMCoreV3.Areas.Admin.Controllers.Customer
             ILoggerFactory loggerFactory)
         {
             _customerRepo = customerRepo;
+            _customerCouponRepo = customerCouponRepo;
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
@@ -123,6 +126,14 @@ namespace TMCoreV3.Areas.Admin.Controllers.Customer
         }
         #endregion Customer
 
+        #region CustomerCoupon
+        [HttpGet, Route("couponIndex")]
+        public IActionResult CouponIndex()
+        {
+            var customerCoupons = _customerCouponRepo.GetAll().ToList();
+            return View(customerCoupons);
+        }
 
+        #endregion //CustomerCoupon
     }
 }

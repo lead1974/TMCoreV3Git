@@ -23,9 +23,11 @@ namespace TMCoreV3.Controllers
         private readonly ISmsService _smsSender;
         private readonly ILogger _logger;
         private TMDbContext _TMDbContext;
+        private ICustomerCouponRepository _customerCouponRepo;
 
         public HomeController(
             TMDbContext dmContext,
+            ICustomerCouponRepository customerCouponRepo,
             UserManager<AuthUser> userManager,
             SignInManager<AuthUser> signInManager,
             RoleManager<AuthRole> roleManager,
@@ -34,6 +36,7 @@ namespace TMCoreV3.Controllers
             ILoggerFactory loggerFactory)
         {            
             _TMDbContext = dmContext;
+            _customerCouponRepo = customerCouponRepo;
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
@@ -63,6 +66,12 @@ namespace TMCoreV3.Controllers
             ViewData["Message"] = "Your contact page.";
             ViewBag.SelectiveTab = "contact";
             return View();
+        }
+
+        public IActionResult GetCustomerCoupons([DataSourceRequest] DataSourceRequest request)
+        {
+            var customerCoupons = _customerCouponRepo.GetAllNonExpired().ToList();
+            return Json(customerCoupons.ToDataSourceResult(request));
         }
 
         public IActionResult Error()

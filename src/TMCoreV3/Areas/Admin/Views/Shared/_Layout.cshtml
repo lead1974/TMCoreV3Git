@@ -11,8 +11,6 @@
         <link href="~/lib/kendo-ui/styles/kendo.common.min.css" rel="stylesheet" />
         <link href="~/lib/kendo-ui/styles/kendo.rtl.css" rel="stylesheet" />
         <link href="~/lib/kendo-ui/styles/kendo.bootstrap.min.css" rel="stylesheet" />
-        <link href="~/lib/kendo-ui/styles/kendo.default.min.css" rel="stylesheet" />
-        <link href="~/lib/kendo-ui/styles/kendo.default.mobile.min.css" rel="stylesheet" />
         <link href="~/lib/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet" />
         <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
@@ -290,18 +288,18 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fa fa-book"></i> <span> Blog Maintenance </span>
+                            <i class="fa fa-book"></i> <span> Coupon Maintenance </span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
                             <li>
-                                <a href="@Url.Action("blogcategoryIndex","blog")"><i class="fa fa-circle-o"></i> Categories</a>
+                                <a href="@Url.Action("CouponIndex","CustomerCoupon")"><i class="fa fa-circle-o"></i> Coupons</a>
                             </li>
-                            <li>
+                            @*<li>
                                 <a href="@Url.Action("blogpostindex","blog")"><i class="fa fa-circle-o"></i> Posts</a>
-                            </li>
+                            </li>*@
                         </ul>
                     </li>
                     <li class="treeview">

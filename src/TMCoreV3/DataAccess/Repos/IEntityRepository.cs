@@ -56,4 +56,16 @@ namespace TMCoreV3.DataAccess.Repos
         void Delete(CustomerApplianceBrand newCustomerApplianceBrand);
         bool SaveAll();
     }
+
+    public interface ICustomerCouponRepository
+    {
+        IEnumerable<CustomerCoupon> GetAll();
+        IEnumerable<CustomerCoupon> GetAllNonExpired();
+        CustomerCoupon FindById(int Id);
+        CustomerCoupon FindByName(string Name);
+        void Add(CustomerCoupon newCustomerCoupon);
+        void Update(CustomerCoupon newCustomerCoupon);
+        void Delete(CustomerCoupon newCustomerCoupon);
+        bool SaveAll();
+    }
 }

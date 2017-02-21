@@ -17,6 +17,7 @@ namespace TMCoreV3.DataAccess
         public DbSet<CustomerApplianceProblem> CustomerApplianceProblems { get; set; }
         public DbSet<CustomerApplianceType> CustomerApplianceTypes { get; set; }
         public DbSet<CustomerApplianceBrand> CustomerApplianceBrands { get; set; }
+        public DbSet<CustomerCoupon> CustomerCoupons { get; set; }
         public TMDbContext(DbContextOptions<TMDbContext> options)
             : base(options)
         {

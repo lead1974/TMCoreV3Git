@@ -331,6 +331,36 @@ namespace TMCoreV3.DataAccess
                 _tmContext.Customers.Add(bcustomer);
                 _tmContext.CustomerApplianceProblems.AddRange(bcustomer.CustomerApplianceProblems);
 
+                var customerCoupons = new List<CustomerCoupon>()
+                    {
+                        new CustomerCoupon() {
+                            Name="20% OFF LABOR",
+                            Description = "On repair, service and installation.Please visit our site for new coupons.",
+                            ExpirationDate=DateTime.UtcNow.AddDays(30),
+                            Sequence = 1
+                        },
+                        new CustomerCoupon() {
+                            Name="SENIOR DISCOUNT 25%",
+                            Description = "On repair, service and installation.Please visit our site for new coupons.",
+                            ExpirationDate=DateTime.UtcNow.AddDays(120),
+                            Sequence = 2
+                        },
+                         new CustomerCoupon() {
+                            Name="20% OFF VISIT",
+                            Description = "On repair, service and installation.Please visit our site for new coupons.",
+                            ExpirationDate=DateTime.UtcNow.AddDays(30),
+                            Sequence = 3
+                        },
+                        new CustomerCoupon() {
+                            Name="25% DISCOUNT FOR PARTS",
+                            Description = "On repair, service and installation.Please visit our site for new coupons.",
+                            ExpirationDate=DateTime.UtcNow.AddDays(120),
+                            Sequence = 4
+                        }
+                    };
+
+                _tmContext.CustomerCoupons.AddRange(customerCoupons);
+
                 await _tmContext.SaveChangesAsync();
 
             }
