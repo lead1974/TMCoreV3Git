@@ -29,15 +29,28 @@ namespace TMCoreV3.DataAccess.Repos
         public void Add(Customer newCustomer)
         {
             _context.Add(newCustomer);
+            if (newCustomer.CustomerApplianceProblems!=null)
+            {
+                _context.CustomerApplianceProblems.AddRange(newCustomer.CustomerApplianceProblems);
+            }
         }
 
-        public void Update(Customer newCustomer)
+        public void Update(Customer theCustomer)
         {
-            _context.Update(newCustomer);
+            _context.Update(theCustomer);
+            if (theCustomer.CustomerApplianceProblems != null)
+            {
+                _context.CustomerApplianceProblems.UpdateRange(theCustomer.CustomerApplianceProblems);
+            }
         }
-        public void Delete(Customer customer)
+
+        public void Remove(Customer theCustomer)
         {
-            _context.Remove(customer);
+            _context.Remove(theCustomer);
+            if (theCustomer.CustomerApplianceProblems != null)
+            {
+                _context.CustomerApplianceProblems.RemoveRange(theCustomer.CustomerApplianceProblems);
+            }
         }
 
         public IEnumerable<Customer> GetAll()

@@ -105,7 +105,7 @@ namespace TMCoreV3.api.Customer
                 return BadRequest(ModelState);
             }
 
-            _customerRepo.Delete(theCustomer);
+            _customerRepo.Remove(theCustomer);
             _customerRepo.SaveAll();
 
             Response.StatusCode = (int)HttpStatusCode.OK;

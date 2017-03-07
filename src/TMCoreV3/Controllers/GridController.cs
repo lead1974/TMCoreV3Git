@@ -49,7 +49,7 @@ namespace TMCoreV3.Controllers
 
                 newCustomer.DateCreated = DateTime.UtcNow;
                 newCustomer.CreatedBy = "SYSTEM";
-                newCustomer.Addess = "123 Test";
+                newCustomer.Address = "123 Test";
                 newCustomer.City = "Test";
                 newCustomer.PhoneNumber = "23423424";
                 newCustomer.PostalCode = "92344";
@@ -71,7 +71,7 @@ namespace TMCoreV3.Controllers
                 var newCustomer = Mapper.Map<DataAccess.Models.Customer.Customer>(theCustomer);
                 newCustomer.DateUpdated = DateTime.UtcNow;
                 newCustomer.UpdatedBy = "SYSTEM";
-                newCustomer.Addess = "123 Test";
+                newCustomer.Address = "123 Test";
                 newCustomer.City = "Test";
                 newCustomer.PhoneNumber = "23423424";
                 newCustomer.PostalCode = "92344";
@@ -91,7 +91,7 @@ namespace TMCoreV3.Controllers
             if (theCustomer != null)
             {
                 var newCustomer = Mapper.Map<DataAccess.Models.Customer.Customer>(theCustomer);
-                _customerRepo.Delete(newCustomer);
+                _customerRepo.Remove(newCustomer);
                 _customerRepo.SaveAll();
                 return Json(new[] { newCustomer }.ToDataSourceResult(request, ModelState));
             }

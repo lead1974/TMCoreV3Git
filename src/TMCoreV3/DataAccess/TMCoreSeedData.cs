@@ -181,7 +181,7 @@ namespace TMCoreV3.DataAccess
                     City = "La Habra",
                     PostalCode = "92788",
                     State = "CA",
-                    Addess = "1241 Robin Way",
+                    Address = "1241 Robin Way",
 
                     CustomerApplianceProblems = new List<CustomerApplianceProblem>()
                     {
@@ -235,7 +235,7 @@ namespace TMCoreV3.DataAccess
                     City = "Garden Grove",
                     PostalCode = "93744",
                     State = "CA",
-                    Addess = "14455 Yankee Way",
+                    Address = "14455 Yankee Way",
 
                     CustomerApplianceProblems = new List<CustomerApplianceProblem>()
                     {
@@ -289,7 +289,7 @@ namespace TMCoreV3.DataAccess
                     City = "Fullerton",
                     PostalCode = "92783",
                     State = "CA",
-                    Addess = "2344 Russki Way",
+                    Address = "2344 Russki Way",
 
                     CustomerApplianceProblems = new List<CustomerApplianceProblem>()
                     {

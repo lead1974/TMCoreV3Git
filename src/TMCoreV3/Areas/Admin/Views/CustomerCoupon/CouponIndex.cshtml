@@ -20,7 +20,7 @@
                   //columns.Bound(p => p.FirstName).ClientTemplate("<a href='" + @Url.Action("About", "Home") + "/#=CustomerId#'>View</a>");
                   columns.Bound(p => p.Name);
                   columns.Bound(p => p.Description);
-                  columns.Bound(p => p.ExpirationDate).Format("{0:d}").EditorTemplateName("DateTime"); 
+                  columns.Bound(p => p.ExpirationDate).Format("{0:d}").EditorTemplateName("Date"); 
                   columns.Bound(p => p.Sequence).EditorTemplateName("Integer");
                   columns.Command(command =>
                   {

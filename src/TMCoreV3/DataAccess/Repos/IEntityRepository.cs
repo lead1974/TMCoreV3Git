@@ -30,7 +30,7 @@ namespace TMCoreV3.DataAccess.Repos
         Customer FindByName(string Name);
         void Add(Customer newCustomer);
         void Update(Customer newCustomer);
-        void Delete(Customer newCustomer);
+        void Remove(Customer newCustomer);
         bool SaveAll();     
     }
 
@@ -42,7 +42,7 @@ namespace TMCoreV3.DataAccess.Repos
         CustomerApplianceType FindByName(string Name);
         void Add(CustomerApplianceType newCustomerApplianceType);
         void Update(CustomerApplianceType newCustomerApplianceType);
-        void Delete(CustomerApplianceType newCustomerApplianceType);
+        void Remove(CustomerApplianceType newCustomerApplianceType);
         bool SaveAll();
     }
 
@@ -53,7 +53,7 @@ namespace TMCoreV3.DataAccess.Repos
         CustomerApplianceBrand FindByName(string Name);
         void Add(CustomerApplianceBrand newCustomerApplianceBrand);
         void Update(CustomerApplianceBrand newCustomerApplianceBrand);
-        void Delete(CustomerApplianceBrand newCustomerApplianceBrand);
+        void Remove(CustomerApplianceBrand newCustomerApplianceBrand);
         bool SaveAll();
     }
 

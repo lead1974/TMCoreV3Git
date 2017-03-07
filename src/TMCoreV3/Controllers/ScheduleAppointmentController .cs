@@ -13,6 +13,7 @@ using Kendo.Mvc.UI;
 using Kendo.Mvc.Extensions;
 using TMCoreV3.ViewModels.CustomerViewModels;
 using TMCoreV3.DataAccess.Models.Customer;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace TMCoreV3.Controllers
 {
@@ -27,8 +28,10 @@ namespace TMCoreV3.Controllers
 
         private ICustomerApplianceTypeRepository _customerApplianceTypeRepo;
         private ICustomerApplianceBrandRepository _customerApplianceBrandRepo;
+        private ICustomerRepository _customerRepo;
 
         public ScheduleAppointmentController(
+            ICustomerRepository customerRepo,
             ICustomerApplianceTypeRepository customerApplianceTypeRepo,
             ICustomerApplianceBrandRepository customerApplianceBrandRepo,
             UserManager<AuthUser> userManager,
@@ -38,6 +41,7 @@ namespace TMCoreV3.Controllers
             ISmsService smsSender,
             ILoggerFactory loggerFactory)
         {
+            _customerRepo = customerRepo;
             _customerApplianceBrandRepo = customerApplianceBrandRepo;
             _customerApplianceTypeRepo = customerApplianceTypeRepo;
             _userManager = userManager;
@@ -50,6 +54,7 @@ namespace TMCoreV3.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.ScheduleConfirmed = "NO";
             ViewBag.SelectiveTab = "scheduleappointment";
             return View();
         }
@@ -60,10 +65,55 @@ namespace TMCoreV3.Controllers
             ViewBag.SelectiveTab = "scheduleappointment";
             if (ModelState.IsValid)
             {
-                return RedirectToAction("index", "home");
+                var userName = form.Email;
+                if (User.Identity.IsAuthenticated) userName = User.Identity.Name;
+
+                var newSchedule = new Customer
+                {
+                    FirstName = form.FirstName,
+                    LastName = form.LastName,
+                    Address = form.Address,
+                    City = form.City,
+                    PhoneNumber = form.PhoneNumber,
+                    PostalCode = form.PostalCode,
+                    State = form.State,
+                    Email = form.Email,                    
+                    CreatedBy = userName,
+                    UpdatedBy = userName,
+                    DateCreated = DateTime.UtcNow,
+                    DateUpdated = DateTime.UtcNow,
+                    CustomerApplianceProblems = new List<CustomerApplianceProblem>()
+                    {
+                        new CustomerApplianceProblem() {
+                            CustomerApplianceTypeId=form.CustomerApplianceTypeId,
+                            CustomerApplianceBrandId=form.CustomerApplianceBrandId,                            
+                            Problem=form.Problem,
+                            DesiredScheduleTime=form.DesiredScheduleTime,
+                            ModelNumber=form.ModelNumber,
+                            ModelSerial=form.ModelSerial,
+                            CreatedBy=userName,
+                            DateCreated=DateTime.UtcNow,                            
+                            ProblemStatus="NEW"
+                        }
+                     }                    
+                    
+                  };
+                //Update and Save Here
+                //_customerRepo.Add(newSchedule);
+                //_customerRepo.SaveAll();
+
+                //Send Email
+                ViewBag.ScheduleConfirmed = "YES";
+                return Confirmation(form);
             }                          
 
             return View(form);
+        }
+
+        [HttpGet]
+        public ActionResult Confirmation(ScheduleAppointment newSchedule)
+        {
+           return View();
         }
 
         [HttpGet, Route("GetCustomerApplianceType")]

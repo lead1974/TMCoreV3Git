@@ -115,10 +115,10 @@ namespace TMCoreV3.ViewModels.CustomerViewModels
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Display(Name = "Addess")]
+        [Display(Name = "Address")]
         [Required(ErrorMessage = "Address is required")]
         [DataType(DataType.Text)]
-        public string Addess { get; set; }
+        public string Address { get; set; }
 
         [Display(Name = "City")]
         [Required(ErrorMessage = "City is required")]

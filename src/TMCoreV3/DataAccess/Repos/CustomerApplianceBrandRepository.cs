@@ -37,7 +37,7 @@ namespace TMCoreV3.DataAccess.Repos
         {
             _context.Update(newCustomerApplianceType);
         }
-        public void Delete(CustomerApplianceBrand newCustomerApplianceType)
+        public void Remove(CustomerApplianceBrand newCustomerApplianceType)
         {
             _context.Remove(newCustomerApplianceType);
         }
