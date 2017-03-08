@@ -52,7 +52,7 @@ namespace TMCoreV3
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddDbContext<TMDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<AuthUser, AuthRole>(options =>
             {

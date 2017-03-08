@@ -49,13 +49,18 @@ namespace TMCoreV3.Controllers
         public IActionResult Index()
         {
             ViewBag.SelectiveTab = "home";
+
+            var customerCoupons = _customerCouponRepo.GetAllNonExpired().ToList();
+            ViewBag.ShowCoupons = "no";
+            if (customerCoupons.Count > 0) ViewBag.ShowCoupons = "yes";
+
             return View();
         }
 
         [SelectedTabFilter("about")]
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "ATApplianceServiceINC ";
             ViewBag.SelectiveTab = "about";
             return View();
         }
@@ -63,7 +68,7 @@ namespace TMCoreV3.Controllers
         [SelectedTabFilter("contact")]
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Feel free contacting us anytime!";
             ViewBag.SelectiveTab = "contact";
             return View();
         }
